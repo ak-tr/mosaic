@@ -32,3 +32,7 @@ To try local changes before pushing: `pnpm link ../mosaic` in the project.
 ## Change it
 
 Edit `tokens.json`, then run `node build.mjs` to regenerate `tokens.css`. Commit both. `node build.mjs --check` fails if they're out of sync.
+
+## License
+
+All rights reserved, see [LICENSE](LICENSE).
