@@ -122,14 +122,15 @@ The other listing layout, for a short set (e.g. projects) where the grid's big t
 rows stacked, 2px gap, tile shades rotate as in the grid
 height follows content (rows are the one tile that isn't square)
 ┌──────────────────────────────────────────────────────┐
-│ 03   Item title                         WEB APP      │  mono meta, right-aligned (opacity .55)
-│      One-line summary in muted text…    TYPESCRIPT  →│
-│                                         2026         │
+│      WEB APP / TYPESCRIPT / V2.1.0 / 2026            │  mono label row (opacity .55)
+│ 03   Item title                                     →│  title (Onest)
+│      One-line summary in muted text…                 │  summary
 └──────────────────────────────────────────────────────┘
-desktop: number (120px) | title + summary | meta | →
-mobile (<720px): number hidden, meta on one line above the title
+desktop: number (120px) | label row + title + summary | →
+mobile (<768px): number hidden
 ```
 
+- **Label row:** mono 11px uppercase, items separated by ` / ` like every other meta line, the date last. Leave out an item a row doesn't have rather than showing a blank.
 - **Number:** big number style at 72px, counting down like the grid (newest = highest).
 - **Title:** Onest 500, 28px (22px on mobile), tracking -0.03em. **Summary:** `muted`, one or two lines.
 - **Hover/focus:** same as a grid tile. Background goes `invert`, text and number go `page`.
