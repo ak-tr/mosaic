@@ -6,7 +6,7 @@
 
 1. **Dakota Black first.** Black page, near-black tiles, white text. That's the default and the look everything is designed in; the other [themes](#themes) are recolourings of it.
 2. **Monochrome.** No accent colour. Use differences in grey, weight and size for hierarchy. Interaction is shown by inverting (dark tile turns light), not by adding colour.
-3. **Squares.** Tiles are square, corners are sharp, and gaps between tiles are hairline. Use square shapes for images and decoration too.
+3. **Squares.** Tiles are square (list rows are the one exception), corners are sharp, and gaps between tiles are hairline. Use square shapes for images and decoration too.
 4. **Type does the work.** Listings have no hero images. A tile is a date, a tag, a big faint number and a title.
 5. **Offset on purpose.** On wide screens, content blocks can be staggered left and right. When they are, label the empty side so the gap reads as intentional.
 6. **Mobile first.** Every layout collapses to a single or two-column version with no horizontal scroll at 375px.
@@ -84,7 +84,7 @@ Headings default to Geist Mono. Page and article titles use Onest.
 
 ## Mosaic grid
 
-The grid for any listing (posts, projects, notes). Build it once per project and reuse it rather than making other lists.
+The default for listings (posts, notes). Build it once per project and reuse it. For a short set where every item matters equally, use the [list](#list) instead. Don't make other listing layouts.
 
 ```text
 3 columns, 2px gap, auto-flow dense
@@ -114,6 +114,27 @@ This way the grid never has holes, whatever the item count. Pages hold 12 items,
 
 Hover/focus: background goes `invert`, text and number go `page`.
 
+## List
+
+The other listing layout, for a short set (e.g. projects) where the grid's big tile would rank one item above the rest. Full-width rows made from the same tiles.
+
+```text
+rows stacked, 2px gap, tile shades rotate as in the grid
+height follows content (rows are the one tile that isn't square)
+┌──────────────────────────────────────────────────────┐
+│      WEB APP / TYPESCRIPT / V2.1.0 / 2026            │  mono label row (opacity .55)
+│ 03   Item title                                     →│  title (Onest)
+│      One-line summary in muted text…                 │  summary
+└──────────────────────────────────────────────────────┘
+desktop: number (120px) | label row + title + summary | →
+mobile (<768px): number hidden
+```
+
+- **Label row:** mono 11px uppercase, items separated by ` / ` like every other meta line, the date last. Leave out an item a row doesn't have rather than showing a blank.
+- **Number:** big number style at 72px, counting down like the grid (newest = highest).
+- **Title:** Onest 500, 28px (22px on mobile), tracking -0.03em. **Summary:** `muted`, one or two lines.
+- **Hover/focus:** same as a grid tile. Background goes `invert`, text and number go `page`.
+
 ## Patterns
 
 - **Square tiles outside the grid:** an index (e.g. tags) uses the same tile look (count, big number, name) in a 2/4-column grid. Cards are `tile` backgrounds in a 2-column grid with 2px gaps.
@@ -121,6 +142,7 @@ Hover/focus: background goes `invert`, text and number go `page`.
 - **Gap labels:** when blocks are staggered (each about 80% wide, one right, one left), fill each empty side with a faint big number and a mono label underneath: `01 / ABOUT`, `02 / BUILDING`. On mobile, hide the number and show the label above its block.
 - **Filter row:** mono uppercase links, active one `white`.
 - **Links:** `white` text, underlined in `n-600` with a 3px offset; the underline goes `white` on hover. Mono action links use the same treatment in uppercase, e.g. `ALL 12 POSTS →`.
+- **Buttons:** for the main action on a page (open a site, download a file). Mono 12px uppercase, square corners, side by side with 2px gaps; full width on phones. The primary one is `invert` with `page` text and turns `tile` with `white` text on hover/focus; secondary ones are `tile` with an `n-800` border and invert on hover/focus. Optional meta (e.g. a version) sits inside at 11px, opacity .6. End the label with an arrow: `→` for a page, `↗` for another site, `↓` for a download.
 - **Chips** (tags): mono 11px uppercase, `n-800` border, square corners, border and text go `white` on hover.
 - **Article header:** `← BLOG` back link, mono meta line `25 DEC 2025 / 7 MIN READ / 1,338 WORDS`, title, tag chips.
 - **Pagination:** mono uppercase `← NEWER · 1 / 2 · OLDER →` above an `n-900` rule.
@@ -158,7 +180,7 @@ A lowercase **a** built from square tiles on a 7x7 grid: white (`#f2f2f2`) lette
 - Add an accent colour, gradients, shadows or rounded corners (`rounded-*`, `shadow-*`).
 - Hard-code a colour (`#111`, `bg-[#f2f2f2]`, Tailwind palette colours like `blue-*`). Use a theme token.
 - Use `dark:` variants or per-theme overrides. Themes go through the tokens.
-- Add non-square tiles to the Mosaic, or break the group-of-3 sizing.
+- Add non-square tiles to the Mosaic grid, or break the group-of-3 sizing.
 - Add a new font. Two families only: Onest and Geist Mono.
 
 ## Accessibility
